@@ -1,0 +1,5 @@
+.gitattributes export-ignore
+.gitignore export-ignore
+.github export-ignore
+scripts export-ignore
+*.zip export-ignore

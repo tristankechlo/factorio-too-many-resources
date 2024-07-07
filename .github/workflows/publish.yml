@@ -1,0 +1,80 @@
+name: Build and Release
+
+on:
+  push:
+    paths:
+      - 'info.json' # Triggers only if the mod info file is updated
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      name: ${{ steps.properties.outputs.name }}
+      tag: ${{ steps.properties.outputs.version }}
+    steps:
+    - name: checkout repository
+      uses: actions/checkout@v4
+
+    - name: read json properties
+      id: properties
+      run: bash ./scripts/prepare.sh
+
+    - name: create zip archive
+      shell: bash
+      env:
+        modname: "${{ steps.properties.outputs.name }}"
+        modversion: "${{ steps.properties.outputs.version }}"
+      run: git archive --prefix "${modname}_${modversion}/" -o "${modname}_${modversion}.zip" HEAD
+
+    - name: create GitHub release
+      uses: softprops/action-gh-release@v2
+      with:
+        tag_name: "v${{ steps.properties.outputs.version }}"
+        name: "v${{ steps.properties.outputs.version }}"
+        body: "${{ steps.properties.outputs.changes }}"
+        draft: false
+        prerelease: false
+        make_latest: true
+        token: "${{ secrets.GITHUB_TOKEN }}"
+        files: ./${{ steps.properties.outputs.name }}_${{ steps.properties.outputs.version }}.zip
+
+    - name: upload archive
+      uses: actions/upload-artifact@v4
+      with:
+        name: latest-archive
+        retention-days: 1
+        overwrite: true
+        path: |
+          ./${{ steps.properties.outputs.name }}_${{ steps.properties.outputs.version }}.zip
+          ./scripts/upload.sh
+
+  publish:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: retrieve saved archive
+        uses: actions/download-artifact@v4
+        with:
+          name: latest-archive
+
+      - name: display inputs
+        shell: bash
+        run: |
+          echo "${{ needs.build.outputs.name }} - ${{ needs.build.outputs.tag }}"
+          echo ""
+          ls -la
+          echo ""
+          ls -la ./scripts
+
+      - name: Upload the mod on mods.factorio.com
+        env:
+          TAG: "${{ needs.build.outputs.tag }}"
+          NAME: "${{ needs.build.outputs.name }}"
+          FACTORIO_MOD_API_KEY: ${{ secrets.FACTORIO_MOD_API_KEY }}
+        run: bash ./scripts/upload.sh

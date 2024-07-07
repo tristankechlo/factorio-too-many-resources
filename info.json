@@ -1,0 +1,13 @@
+{
+  "name": "too-many-resources",
+  "title": "Too Many Resources",
+  "description": "lets you to destroy your spare resources",
+  "version": "1.0.0",
+  "factorio_version": "1.1",
+  "author": "tristankechlo",
+  "contact": "https://github.com/tristankechlo/factorio-too-many-resources",
+  "homepage": "https://github.com/tristankechlo/factorio-too-many-resources",
+  "dependencies": [
+    "base >= 1.1.0"
+  ]
+}
