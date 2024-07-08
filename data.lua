@@ -17,7 +17,7 @@ data:extend({
         type = "recipe",
         name = "void-chest",
         ingredients = {{"steel-plate", 8}, {"electronic-circuit", 1}},
-        energy_required = 5, -- crafting time
+        energy_required = 1, -- crafting time
         result = "void-chest"
     }
 })
