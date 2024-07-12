@@ -11,9 +11,9 @@ for index, force in pairs(game.forces) do
     local technologies = force.technologies
     local recipes = force.recipes
     
-    if technologies["void-technology"].researched then
+    if technologies["tmr:void-technology"].researched then
         -- unlock added recipes for already researched technologies here
-        recipes["void-pipe"].enabled = true
+        recipes["tmr:void-pipe"].enabled = true
     end
 end
 ```

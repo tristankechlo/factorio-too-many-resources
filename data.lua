@@ -1,13 +1,13 @@
 data:extend({
     {
         type = "item",
-        name = "void-chest",
+        name = "tmr:void-chest",
         icon = "__too-many-resources__/graphics/void-chest.png",
         icon_size = 64,
         icon_mipmaps = 4,
         subgroup = "storage",
         order = "a[items]-d[void-chest]",
-        place_result = "void-chest",
+        place_result = "tmr:void-chest",
         stack_size = 50
     }
 })
@@ -15,24 +15,24 @@ data:extend({
 data:extend({
     {
         type = "recipe",
-        name = "void-chest",
+        name = "tmr:void-chest",
         ingredients = {{"steel-plate", 8}, {"electronic-circuit", 1}},
         energy_required = 1, -- crafting time
-        result = "void-chest"
+        result = "tmr:void-chest"
     }
 })
 
 data:extend({
     {
         type = "technology",
-        name = "void-technology",
+        name = "tmr:void-technology",
         icon = "__too-many-resources__/graphics/void-chest-single.png",
         icon_size = 64,
         prerequisites = {"steel-processing"},
         effects = {
             {
                 type   = 'unlock-recipe',
-                recipe = 'void-chest'
+                recipe = 'tmr:void-chest'
             }
         },
         unit = {
@@ -49,12 +49,12 @@ data:extend({
 data:extend({
     {
         type = "container",
-        name = "void-chest",
+        name = "tmr:void-chest",
         icon = "__too-many-resources__/graphics/void-chest.png",
         icon_size = 64,
         icon_mipmaps = 4,
         flags = {"placeable-neutral", "player-creation"},
-        minable = {mining_time = 0.1, result = "void-chest"},
+        minable = {mining_time = 0.1, result = "tmr:void-chest"},
         max_health = 1,
         corpse = "iron-chest-remnants",
         dying_explosion = "iron-chest-explosion",
@@ -69,6 +69,7 @@ data:extend({
             filename = "__base__/sound/metallic-chest-close.ogg",
             volume = 0.6
         },
+        vehicle_impact_sound = { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
         picture = {
             filename = "__too-many-resources__/graphics/void-chest.png",
             priority = "extra-high",

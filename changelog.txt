@@ -1,6 +1,10 @@
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.0
 Date: 2024-07-XX
+  Major Changes:
+    - internal id's for items/recipes and technologies changed
+      done, to prevent conflicts with other items named "void-chest"
+      no backwards compatibility (you need to craft/place the items again)
   Balancing:
     - reduce crafting time to 1s
   Bugfixes:
