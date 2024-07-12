@@ -14,7 +14,3 @@ lets you to destroy your spare resources
 ### Graphics
 
 - TODO change chest texture
-
-### Bugfixes
-
-- TODO fix technology/research requirements

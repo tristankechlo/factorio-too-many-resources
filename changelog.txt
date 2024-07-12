@@ -3,6 +3,8 @@ Version: 1.1.0
 Date: 2024-07-XX
   Balancing:
     - reduce crafting time to 1s
+  Bugfixes:
+    - remove "basic-tech-card" from research ingredients (was added by "Krastorio2")
 ---------------------------------------------------------------------------------------------------
 Version: 1.0.0
 Date: 2024-07-08
