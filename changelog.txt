@@ -5,6 +5,8 @@ Date: 2024-07-XX
     - reduce crafting time to 1s
   Bugfixes:
     - remove "basic-tech-card" from research ingredients (was added by "Krastorio2")
+  Circuit Network:
+    - disable wire connections for the "void-chest"
 ---------------------------------------------------------------------------------------------------
 Version: 1.0.0
 Date: 2024-07-08
