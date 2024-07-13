@@ -17,14 +17,6 @@ local function on_built(event)
     end
 end
 
-local function on_tick(event)
-    -- TODO make time configurable
-    -- at 60 fps => 60 ticks = 10 seconds
-    if event.tick % 600 == 0 then
-        removeItems(event)
-    end
-end
-
 local function removeItems(event)
     for i, voidchest in pairs(global.too_many_resources.voidchests) do
         -- remove entites that are removed by now
@@ -37,6 +29,14 @@ local function removeItems(event)
             global.too_many_resources.voidchests[i].clear_items_inside()
         end
         ::skip::
+    end
+end
+
+local function on_tick(event)
+    -- TODO make time configurable
+    -- at 60 fps => 60 ticks = 10 seconds
+    if event.tick % 600 == 0 then
+        removeItems(event)
     end
 end
 
