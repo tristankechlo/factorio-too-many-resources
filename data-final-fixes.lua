@@ -13,7 +13,7 @@ if mods["Krastorio2"] then
     -- loop through all ingredients and remove the target one
     if ingredients and #ingredients > 0 then
         for i = 1, #ingredients do
-            local ingredient_name = ingredient[i].name or ingredient[i][1]
+            local ingredient_name = ingredients[i].name or ingredients[i][1]
             if ingredient_name == "basic-tech-card" then
                 table.remove(ingredients, i)
                 log("[Too Many Resources] Removed 'basic-tech-card' as ingredient from 'tmr:void-technology'")
