@@ -10,7 +10,3 @@ lets you to destroy your spare resources
 
 - `void-pipe`: deletes all inserted fluids
 - configurable delay for clearing inventories
-
-### Graphics
-
-- TODO change chest texture
