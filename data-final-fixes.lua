@@ -1,4 +1,3 @@
-
 -- remove "basic-tech-card" from research ingredients
 -- added by "Krastorio2" during "data-updates.lua"
 -- added when the technology only contains "automation-science-pack" and "logistic-science-pack"
@@ -7,7 +6,7 @@ if mods["Krastorio2"] then
 
     local ingredients = false
     if technology and technology.unit and technology.unit.ingredients then
-      ingredients = technology.unit.ingredients
+        ingredients = technology.unit.ingredients
     end
 
     -- loop through all ingredients and remove the target one

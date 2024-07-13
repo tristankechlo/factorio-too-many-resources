@@ -9,7 +9,7 @@ end
 local function on_built(event)
     local entity = event.created_entity or event.entity or event.destination
     if not entity or not entity.valid then
-        return 
+        return
     end
 
     if entity.name == "tmr:void-chest" then
@@ -44,7 +44,10 @@ script.on_init(on_init)
 script.on_event(defines.events.on_tick, on_tick)
 
 -- ignore build events for ghost entities
-local filter = {{filter = "ghost", invert = true}, {filter = "name", name = "tmr:void-chest", mode = "and"}}
+local filter = {
+    {filter = "ghost", invert = true},
+    {filter = "name", name = "tmr:void-chest", mode = "and"}
+}
 script.on_event(defines.events.on_built_entity, on_built, filter)
 script.on_event(defines.events.on_entity_cloned, on_built, filter)
 script.on_event(defines.events.on_robot_built_entity, on_built, filter)
