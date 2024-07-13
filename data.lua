@@ -55,6 +55,7 @@ data:extend({
         dying_explosion = "iron-chest-explosion",
         collision_box = {{-0.35, -0.35}, {0.35, 0.35}},
         selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+        fast_replaceable_group = "container",
         inventory_size = 100,
         open_sound = {
             filename = "__base__/sound/metallic-chest-open.ogg",

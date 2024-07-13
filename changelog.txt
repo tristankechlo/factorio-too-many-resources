@@ -1,13 +1,15 @@
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.0
 Date: 2024-07-13
-  Major Changes:
+  Major Features:
     - internal id's for items/recipes and technologies changed
       done, to prevent conflicts with other items named "void-chest"
       no backwards compatibility (you need to craft/place the items again)
+  Minor Features:
+    - "void-chest" is now replacable by other chests
   Balancing:
     - reduce crafting time to 1s
-    - "void-chest" now has same health like "steel-chest"
+    - "void-chest" now has a health of 350
   Graphics:
     - add better textures for the "void-chest"
   Bugfixes:
