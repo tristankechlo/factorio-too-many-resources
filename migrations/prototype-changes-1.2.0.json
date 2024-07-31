@@ -1,0 +1,14 @@
+{
+    "item": [
+        [ "tmr:void-chest", "tmr-void-chest" ]
+    ],
+    "recipe": [
+        [ "tmr:void-chest", "tmr-void-chest" ]
+    ],
+    "entity": [
+        [ "tmr:void-chest", "tmr-void-chest" ]
+    ],
+    "technology": [
+        [ "tmr:void-technology", "tmr-void-technology" ]
+    ]
+}

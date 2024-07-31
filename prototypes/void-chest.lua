@@ -2,13 +2,13 @@
 data:extend({
     {
         type = "item",
-        name = "tmr:void-chest",
+        name = "tmr-void-chest",
         icon = "__too-many-resources__/graphics/icon/void-chest.png",
         icon_size = 64,
         icon_mipmaps = 4,
         subgroup = "storage",
         order = "a[items]-d[void-chest]",
-        place_result = "tmr:void-chest",
+        place_result = "tmr-void-chest",
         stack_size = 50
     }
 })
@@ -16,22 +16,22 @@ data:extend({
 data:extend({
     {
         type = "recipe",
-        name = "tmr:void-chest",
+        name = "tmr-void-chest",
         ingredients = {{"steel-plate", 8}, {"electronic-circuit", 1}},
         energy_required = 1, -- crafting time
-        result = "tmr:void-chest"
+        results = {{ type = "item", name = "tmr-void-chest", amount = 1 }}
     }
 })
 
 data:extend({
     {
         type = "container",
-        name = "tmr:void-chest",
+        name = "tmr-void-chest",
         icon = "__too-many-resources__/graphics/icon/void-chest.png",
         icon_size = 64,
         icon_mipmaps = 4,
         flags = {"placeable-neutral", "player-creation"},
-        minable = {mining_time = 0.2, result = "tmr:void-chest"},
+        minable = {mining_time = 0.2, result = "tmr-void-chest"},
         max_health = 350,
         corpse = "iron-chest-remnants",
         dying_explosion = "iron-chest-explosion",

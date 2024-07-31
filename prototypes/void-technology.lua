@@ -2,14 +2,14 @@
 data:extend({
     {
         type = "technology",
-        name = "tmr:void-technology",
+        name = "tmr-void-technology",
         icon = "__too-many-resources__/graphics/technology/void-technology.png",
         icon_size = 64,
         icon_mipmaps = 4,
         prerequisites = {"steel-processing"},
         effects = {
-            {type = 'unlock-recipe', recipe = 'tmr:void-chest'},
-            {type = 'unlock-recipe', recipe = 'tmr:void-pipe'}
+            {type = 'unlock-recipe', recipe = 'tmr-void-chest'},
+            {type = 'unlock-recipe', recipe = 'tmr-void-pipe'}
         },
         unit = {
             count = 100,
