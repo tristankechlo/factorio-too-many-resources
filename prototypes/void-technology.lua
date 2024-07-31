@@ -8,8 +8,7 @@ data:extend({
         icon_mipmaps = 4,
         prerequisites = {"steel-processing"},
         effects = {
-            {type = 'unlock-recipe', recipe = 'tmr-void-chest'},
-            {type = 'unlock-recipe', recipe = 'tmr-void-pipe'}
+            {type = 'unlock-recipe', recipe = 'tmr-void-chest'}
         },
         unit = {
             count = 100,
