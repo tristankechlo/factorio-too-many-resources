@@ -1,10 +1,10 @@
-
 ---------------------------------------------------------------------------------------------------
 Version: 1.2.0
 Date: 01. 08. 2024
   Major Features:
     - once again: internal id's for items/recipes and technologies changed
       done, because factorio will potentially limit the prototype names to the characters: AZaz09_-
+      but, migration is done automatically, no recrafing this time ;D
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.0
 Date: 13. 07. 2024
