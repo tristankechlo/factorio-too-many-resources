@@ -20,3 +20,10 @@ if mods["Krastorio2"] then
         end
     end
 end
+
+-- aai-containers changes the order and subgroups of the items
+-- adjust to the new subgroups
+if mods["aai-containers"] then
+    data.raw.item["tmr-void-chest"].subgroup = "container-1"
+    data.raw.item["tmr-void-chest"].order = "z[items]-a[void-chest]"
+end

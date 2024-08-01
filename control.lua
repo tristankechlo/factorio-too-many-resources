@@ -1,9 +1,10 @@
 require "util"
 
--- setup globals
+-- setup globals, only run when the is started the first time
 local function on_init()
     global.too_many_resources = global.too_many_resources or {}
     global.too_many_resources.voidchests = global.too_many_resources.voidchests or {}
+    global.too_many_resources.fluiddestroyers = global.too_many_resources.fluiddestroyers or {}
 end
 
 local function on_built(event)
@@ -13,8 +14,12 @@ local function on_built(event)
     end
 
     if entity.name == "tmr-void-chest" then
-        --game.print("new chest was placed", { skip = defines.print_skip.never, color = {r = 255/255, g = 0, b = 0}})
+        -- game.print("new void-chest was placed", { skip = defines.print_skip.never, color = {r = 255/255, g = 0, b = 0}})
         table.insert(global.too_many_resources.voidchests, entity)
+    end
+    if entity.name == "tmr-fluid-destroyer" then
+        -- game.print("new fluid-destroyer was placed", { skip = defines.print_skip.never, color = {r = 255/255, g = 0, b = 0}})
+        table.insert(global.too_many_resources.fluiddestroyers, entity)
     end
 end
 
@@ -33,11 +38,38 @@ local function removeItems(event)
     end
 end
 
+local function removeFluids(event)
+    for i, fluidDestroyer in pairs(global.too_many_resources.fluiddestroyers) do
+        -- remove entites that are removed by now
+        if not fluidDestroyer.valid then
+            table.remove(global.too_many_resources.fluiddestroyers, i)
+            goto skip
+        end
+        -- delete all fluids
+        if next(global.too_many_resources.fluiddestroyers[i].get_fluid_contents()) ~= nil then
+            global.too_many_resources.fluiddestroyers[i].clear_fluid_inside()
+        end
+        ::skip::
+    end
+end
+
 local function on_tick(event)
+    -- ensure globals exists, needed because 'on_init' is not done after mod updates and the tables might remain nil
+    if global.too_many_resources == nil then
+        global.too_many_resources = {}
+    end
+    if global.too_many_resources.voidchests == nil then
+        global.too_many_resources.voidchests = {}
+    end
+    if global.too_many_resources.fluiddestroyers == nil then
+        global.too_many_resources.fluiddestroyers = {}
+    end
+
     -- TODO make time configurable
     -- at 60 fps => 60 ticks = 10 seconds
     if event.tick % 600 == 0 then
         removeItems(event)
+        removeFluids(event)
     end
 end
 

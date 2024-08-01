@@ -7,8 +7,8 @@ lets you to destroy your spare resources
 ## Features
 
 - `void-chest`: deletes all inserted items
+- `fluid-destroyer`: deletes all inserted fluids
 
 ## Planned
 
-- `void-pipe`: deletes all inserted fluids
 - configurable delay for clearing inventories
