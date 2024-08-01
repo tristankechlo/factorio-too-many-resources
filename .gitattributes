@@ -3,3 +3,4 @@
 .github export-ignore
 scripts export-ignore
 *.zip export-ignore
+migrations/info.md export-ignore

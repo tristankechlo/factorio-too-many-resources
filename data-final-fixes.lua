@@ -2,7 +2,7 @@
 -- added by "Krastorio2" during "data-updates.lua"
 -- added when the technology only contains "automation-science-pack" and "logistic-science-pack"
 if mods["Krastorio2"] then
-    local technology = data.raw.technology["tmr:void-technology"] or false
+    local technology = data.raw.technology["tmr-void-technology"] or false
 
     local ingredients = false
     if technology and technology.unit and technology.unit.ingredients then
@@ -15,7 +15,7 @@ if mods["Krastorio2"] then
             local ingredient_name = ingredients[i].name or ingredients[i][1]
             if ingredient_name == "basic-tech-card" then
                 table.remove(ingredients, i)
-                log("[Too Many Resources] Removed 'basic-tech-card' as ingredient from 'tmr:void-technology'")
+                log("[Too Many Resources] Removed 'basic-tech-card' as ingredient from 'tmr-void-technology'")
             end
         end
     end

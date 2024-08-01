@@ -12,7 +12,8 @@ local function on_built(event)
         return
     end
 
-    if entity.name == "tmr:void-chest" then
+    if entity.name == "tmr-void-chest" then
+        --game.print("new chest was placed", { skip = defines.print_skip.never, color = {r = 255/255, g = 0, b = 0}})
         table.insert(global.too_many_resources.voidchests, entity)
     end
 end
@@ -45,8 +46,7 @@ script.on_event(defines.events.on_tick, on_tick)
 
 -- ignore build events for ghost entities
 local filter = {
-    {filter = "ghost", invert = true},
-    {filter = "name", name = "tmr:void-chest", mode = "and"}
+    {filter = "ghost", invert = true}
 }
 script.on_event(defines.events.on_built_entity, on_built, filter)
 script.on_event(defines.events.on_entity_cloned, on_built, filter)
