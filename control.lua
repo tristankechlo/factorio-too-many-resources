@@ -1,6 +1,18 @@
 require "util"
 
--- setup globals, only run when the is started the first time
+local function ensureGlobals()
+    if global.too_many_resources == nil then
+        global.too_many_resources = {}
+    end
+    if global.too_many_resources.voidchests == nil then
+        global.too_many_resources.voidchests = {}
+    end
+    if global.too_many_resources.fluiddestroyers == nil then
+        global.too_many_resources.fluiddestroyers = {}
+    end
+end
+
+-- setup globals, only run when the mod is started the first time on a specific savegame
 local function on_init()
     global.too_many_resources = global.too_many_resources or {}
     global.too_many_resources.voidchests = global.too_many_resources.voidchests or {}
@@ -55,15 +67,7 @@ end
 
 local function on_tick(event)
     -- ensure globals exists, needed because 'on_init' is not done after mod updates and the tables might remain nil
-    if global.too_many_resources == nil then
-        global.too_many_resources = {}
-    end
-    if global.too_many_resources.voidchests == nil then
-        global.too_many_resources.voidchests = {}
-    end
-    if global.too_many_resources.fluiddestroyers == nil then
-        global.too_many_resources.fluiddestroyers = {}
-    end
+    ensureGlobals()
 
     -- TODO make time configurable
     -- at 60 fps => 60 ticks = 10 seconds

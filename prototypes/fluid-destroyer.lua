@@ -1,4 +1,27 @@
 
+local pictures = {
+    layers = {
+        {
+            filename = "__too-many-resources__/graphics/entity/fluid-destroyer.png",
+            priority = "extra-high",
+            size = {42, 104},
+            shift = {0 / 32, -30 / 32}
+        }, {
+            filename = "__too-many-resources__/graphics/entity/fluid-destroyer-shadow.png",
+            priority = "extra-high",
+            size = {81, 42},
+            shift = {42 / 32, 0 / 32},
+            draw_as_shadow = true
+        }
+    }
+}
+
+local blank = {
+    filename = "__core__/graphics/empty.png",
+    priority = "extra-high",
+    size = {1, 1},
+}
+
 data:extend({
     {
         type = "item",
@@ -23,23 +46,6 @@ data:extend({
     }
 })
 
-local pictures = {
-    layers = {
-        {
-            filename = "__too-many-resources__/graphics/entity/fluid-destroyer.png",
-            priority = "extra-high",
-            size = {42, 104},
-            shift = {0 / 32, -30 / 32}
-        }, {
-            filename = "__too-many-resources__/graphics/entity/fluid-destroyer-shadow.png",
-            priority = "extra-high",
-            size = {81, 42},
-            shift = {42 / 32, 0 / 32},
-            draw_as_shadow = true
-        }
-    }
-}
-
 data:extend({
     {
         type = "storage-tank",
@@ -50,11 +56,10 @@ data:extend({
         flags = {"placeable-neutral", "player-creation"},
         minable = {mining_time = 0.2, result = "tmr-fluid-destroyer"},
         max_health = 350,
-        corpse = "big-remnants",
+        corpse = "small-remnants",
         dying_explosion = "medium-explosion",
         collision_box = {{-0.35, -0.35}, {0.35, 0.35}},
         selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
-        window_bounding_box = {{-0.5, -0.5}, {0.5, 0.5}},
         open_sound = {
             filename = "__base__/sound/metallic-chest-open.ogg",
             volume = 0.6
@@ -74,37 +79,18 @@ data:extend({
                 south = pictures,
                 west = pictures,
             },
-            window_background = {
-                filename = "__base__/graphics/entity/storage-tank/window-background.png",
+            window_background = blank,
+            fluid_background = blank,
+            flow_sprite =  blank,
+            gas_flow = { -- same as blank, but with 'frame_count'
+                filename = "__core__/graphics/empty.png",
                 priority = "extra-high",
-                width = 17,
-                height = 24,
-            },
-            fluid_background = {
-                filename = "__base__/graphics/entity/storage-tank/fluid-background.png",
-                priority = "extra-high",
-                width = 32,
-                height = 15,
-            },
-            flow_sprite =  {
-                filename = "__base__/graphics/entity/pipe/fluid-flow-low-temperature.png",
-                priority = "extra-high",
-                width = 160,
-                height = 20,
-            },
-            gas_flow = {
-                filename = "__base__/graphics/entity/pipe/steam.png",
-                priority = "extra-high",
-                line_length = 10,
-                width = 24,
-                height = 15,
-                frame_count = 60,
-                axially_symmetrical = false,
-                direction_count = 1,
-                animation_speed = 0.25,
+                size = {1, 1},
+                frame_count = 1,
             },
         },
-        flow_length_in_ticks = 360,
+        window_bounding_box = {{0, 0}, {0, 0}},
+        flow_length_in_ticks = 1,
         fluid_box = {
             base_area = 5000, -- gets multiplied by 100 (result => 500k)
             height = 1,
@@ -112,7 +98,7 @@ data:extend({
             production_type = "input",
             pipe_covers = pipecoverspictures(),
             pipe_connections = {
-                {type = "input", position = { 0, 1 }},
+                {type = "input", position = { 0, 1 }}, -- default connection at the bottom of the entity
             },
         },
         resistances = {
