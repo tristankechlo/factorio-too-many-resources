@@ -1,21 +1,4 @@
 
-local pictures = {
-    layers = {
-        {
-            filename = "__too-many-resources__/graphics/entity/fluid-destroyer.png",
-            priority = "extra-high",
-            size = {42, 104},
-            shift = {0 / 32, -30 / 32}
-        }, {
-            filename = "__too-many-resources__/graphics/entity/fluid-destroyer-shadow.png",
-            priority = "extra-high",
-            size = {81, 42},
-            shift = {42 / 32, 0 / 32},
-            draw_as_shadow = true
-        }
-    }
-}
-
 local blank = {
     filename = "__core__/graphics/empty.png",
     priority = "extra-high",
@@ -74,10 +57,21 @@ data:extend({
         },
         pictures = {
             picture = {
-                north = pictures,
-                east = pictures,
-                south = pictures,
-                west = pictures,
+                -- use the same image for all directions
+                layers = {
+                    {
+                        filename = "__too-many-resources__/graphics/entity/fluid-destroyer.png",
+                        priority = "extra-high",
+                        size = {42, 104},
+                        shift = {0 / 32, -30 / 32}
+                    }, {
+                        filename = "__too-many-resources__/graphics/entity/fluid-destroyer-shadow.png",
+                        priority = "extra-high",
+                        size = {81, 42},
+                        shift = {42 / 32, 0 / 32},
+                        draw_as_shadow = true
+                    }
+                }
             },
             window_background = blank,
             fluid_background = blank,
