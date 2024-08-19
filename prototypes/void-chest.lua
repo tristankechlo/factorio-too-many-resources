@@ -7,7 +7,7 @@ data:extend({
         icon_size = 64,
         icon_mipmaps = 4,
         subgroup = "storage",
-        order = "a[items]-d[void-chest]",
+        order = "a[items]-a[void-chest]",
         place_result = "tmr-void-chest",
         stack_size = 50
     }
