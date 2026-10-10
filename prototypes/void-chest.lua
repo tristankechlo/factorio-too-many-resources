@@ -61,9 +61,9 @@ data:extend({
                     shift = {0 / 32, -3 / 32},
                     scale = 0.5
                 }, {
-                    filename = "__base__/graphics/entity/infinity-chest/hr-infinity-chest-shadow.png",
+                    filename = "__base__/graphics/entity/steel-chest/steel-chest-shadow.png",
                     priority = "extra-high",
-                    size = {116, 48},
+                    size = {110, 46},
                     shift = {12 / 32, 6 / 32},
                     draw_as_shadow = true,
                     scale = 0.5
@@ -80,4 +80,3 @@ data:extend({
         se_allow_in_space = true
     }
 })
-

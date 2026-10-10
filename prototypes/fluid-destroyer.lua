@@ -95,7 +95,7 @@ data:extend({
                 {
                     connection_type = "normal",
                     direction = defines.direction.south,
-                    position = {0, 0.5}
+                    position = {0, 0}
                 }
             },
         },
@@ -109,4 +109,3 @@ data:extend({
         se_allow_in_space = true
     }
 })
-
