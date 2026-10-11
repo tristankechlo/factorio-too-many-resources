@@ -19,7 +19,7 @@ jobs:
       tag: ${{ steps.properties.outputs.version }}
     steps:
     - name: checkout repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@v7
 
     - name: read json properties
       id: properties
@@ -45,7 +45,7 @@ jobs:
         files: ./${{ steps.properties.outputs.name }}_${{ steps.properties.outputs.version }}.zip
 
     - name: upload archive
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v7
       with:
         name: latest-archive
         retention-days: 1
@@ -59,7 +59,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: retrieve saved archive
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v7
         with:
           name: latest-archive
 

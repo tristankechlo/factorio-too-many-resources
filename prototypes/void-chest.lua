@@ -5,7 +5,6 @@ data:extend({
         name = "tmr-void-chest",
         icon = "__too-many-resources__/graphics/icon/void-chest.png",
         icon_size = 64,
-        icon_mipmaps = 4,
         subgroup = "storage",
         order = "a[items]-a[void-chest]",
         place_result = "tmr-void-chest",
@@ -17,7 +16,10 @@ data:extend({
     {
         type = "recipe",
         name = "tmr-void-chest",
-        ingredients = {{"steel-plate", 8}, {"electronic-circuit", 1}},
+        ingredients = {
+            {type = "item", name = "steel-plate", amount = 8},
+            {type = "item", name = "electronic-circuit", amount = 1}
+        },
         energy_required = 1, -- crafting time
         results = {{ type = "item", name = "tmr-void-chest", amount = 1 }}
     }
@@ -29,7 +31,6 @@ data:extend({
         name = "tmr-void-chest",
         icon = "__too-many-resources__/graphics/icon/void-chest.png",
         icon_size = 64,
-        icon_mipmaps = 4,
         flags = {"placeable-neutral", "player-creation"},
         minable = {mining_time = 0.2, result = "tmr-void-chest"},
         max_health = 350,
@@ -54,41 +55,28 @@ data:extend({
         picture = {
             layers = {
                 {
-                    filename = "__too-many-resources__/graphics/entity/void-chest.png",
+                    filename = "__too-many-resources__/graphics/entity/hr-void-chest.png",
                     priority = "extra-high",
-                    size = {34, 42},
+                    size = {68, 84},
                     shift = {0 / 32, -3 / 32},
-                    hr_version = {
-                        filename = "__too-many-resources__/graphics/entity/hr-void-chest.png",
-                        priority = "extra-high",
-                        size = {68, 84},
-                        shift = {0 / 32, -3 / 32},
-                        scale = 0.5
-                    }
+                    scale = 0.5
                 }, {
-                    filename = "__base__/graphics/entity/infinity-chest/infinity-chest-shadow.png",
+                    filename = "__base__/graphics/entity/steel-chest/steel-chest-shadow.png",
                     priority = "extra-high",
-                    size = {58, 24},
+                    size = {110, 46},
                     shift = {12 / 32, 6 / 32},
                     draw_as_shadow = true,
-                    hr_version = {
-                        filename = "__base__/graphics/entity/infinity-chest/hr-infinity-chest-shadow.png",
-                        priority = "extra-high",
-                        size = {116, 48},
-                        shift = {12 / 32, 6 / 32},
-                        draw_as_shadow = true,
-                        scale = 0.5
-                    }
+                    scale = 0.5
                 }
             }
         },
         resistances = {
             {type = "fire", percent = 90}, {type = "impact", percent = 60}
         },
-        circuit_wire_connection_point = nil,
-        circuit_connector_sprites = nil,
+        circuit_connector = nil,
         circuit_wire_max_distance = nil,
+        draw_copper_wires = false,
+        draw_circuit_wires = false,
         se_allow_in_space = true
     }
 })
-

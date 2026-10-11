@@ -11,7 +11,6 @@ data:extend({
         name = "tmr-fluid-destroyer",
         icon = "__too-many-resources__/graphics/icon/fluid-destroyer.png",
         icon_size = 64,
-        icon_mipmaps = 4,
         subgroup = "production-machine",
         order = "e-d1[fluid-destroyer]",
         place_result = "tmr-fluid-destroyer",
@@ -23,7 +22,11 @@ data:extend({
     {
         type = "recipe",
         name = "tmr-fluid-destroyer",
-        ingredients = {{"pipe", 1}, {"steel-plate", 4}, {"electronic-circuit", 1}},
+        ingredients = {
+            {type = "item", name = "pipe", amount = 1},
+            {type = "item", name = "steel-plate", amount = 4},
+            {type = "item", name = "electronic-circuit", amount = 1}
+        },
         energy_required = 1, -- crafting time
         results = {{ type = "item", name = "tmr-fluid-destroyer", amount = 1 }}
     }
@@ -35,7 +38,6 @@ data:extend({
         name = "tmr-fluid-destroyer",
         icon = "__too-many-resources__/graphics/icon/fluid-destroyer.png",
         icon_size = 64,
-        icon_mipmaps = 4,
         flags = {"placeable-neutral", "player-creation"},
         minable = {mining_time = 0.2, result = "tmr-fluid-destroyer"},
         max_health = 350,
@@ -86,13 +88,15 @@ data:extend({
         window_bounding_box = {{0, 0}, {0, 0}},
         flow_length_in_ticks = 1,
         fluid_box = {
-            base_area = 5000, -- gets multiplied by 100 (result => 500k)
-            height = 1,
-            base_level = -1,
+            volume = 500000,
             production_type = "input",
             pipe_covers = pipecoverspictures(),
             pipe_connections = {
-                {type = "input", position = { 0, 1 }}, -- default connection at the bottom of the entity
+                {
+                    connection_type = "normal",
+                    direction = defines.direction.south,
+                    position = {0, 0}
+                }
             },
         },
         resistances = {
@@ -105,4 +109,3 @@ data:extend({
         se_allow_in_space = true
     }
 })
-
